@@ -18,9 +18,12 @@
     "test:e2e:ui": "dotenv -e .env.test -- playwright test --ui --reporter null"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "next": "15.5.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.62.0",
+    "zod": "^4.1.9"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",

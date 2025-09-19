@@ -6,8 +6,8 @@ export const UserIcon = () => {
       <Image
         src="/custom_icon.svg"
         alt="Ícone de usuário"
-        width={32}
-        height={32}
+        width={56}
+        height={56}
       />
     </div>
   );

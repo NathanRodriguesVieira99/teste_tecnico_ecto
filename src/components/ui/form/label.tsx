@@ -9,7 +9,7 @@ export const Label = ({ children, htmlFor, ...props }: LabelProps) => {
     <label
       htmlFor={htmlFor}
       {...props}
-      className="text-main text-base pb-2 pt-4 font-semibold leading-normal"
+      className="pt-4 pb-2 font-semibold text-base text-main leading-normal"
     >
       {children}
     </label>

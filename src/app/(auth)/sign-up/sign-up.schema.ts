@@ -14,6 +14,13 @@ export const signUpSchema = z.object({
     })
     .max(MAX_CHARACTERS_NAME, { message: "Número de caracteres excedido!" }),
 
+  last_name: z
+    .string()
+    .nonempty({ message: "Campo obrigatório!" })
+    .min(MIN_CHARACTERS_NAME, {
+      message: "O sobrenome deve ter ao menos 3 caracteres!",
+    })
+    .max(MAX_CHARACTERS_NAME, { message: "Número de caracteres excedido!" }),
   /*
    z.string() + z.email() está depreceado o zod recomenda usar z.email,  só assim funciona a validação "Campo obrigatório"
    */
@@ -34,7 +41,7 @@ export const signUpSchema = z.object({
       message: "A senha deve ter ao menos 8 caracteres!",
     }),
 
-  confirmPassword: z
+  confirm_password: z
     .string({ message: "Campo obrigatório!" })
     .nonempty({ message: "Campo obrigatório!" })
     .min(MAX_PASSWORD_CHARACTERS, {

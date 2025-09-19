@@ -3,8 +3,8 @@ export const ShowPasswordButton = () => {
   return (
     <div className="flex items-center justify-center">
       <button
+        className="flex h-10 w-20 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-tr-md rounded-br-md border-soft border-t border-r border-b bg-white p-2"
         type="button"
-        className="w-20 h-10 p-2 cursor-pointer bg-white rounded-tr-md rounded-br-md border-r border-t border-b border-soft flex justify-center items-center gap-2 overflow-hidden "
       >
         Mostrar
       </button>

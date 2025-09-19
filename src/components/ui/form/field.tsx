@@ -8,7 +8,7 @@ interface FieldProps extends ComponentProps<"div"> {
 
 export const Field = ({ children, className, ...props }: FieldProps) => {
   return (
-    <div {...props} className={twMerge("flex flex-col ", className)}>
+    <div {...props} className={twMerge("flex flex-col", className)}>
       {children}
     </div>
   );

@@ -2,16 +2,16 @@ import Image from "next/image";
 
 export const Header = () => {
   return (
-    <header className="flex w-96 relative justify-between h-5 pt-6 items-center p-6">
+    <header className="relative flex h-5 w-96 items-center justify-between p-6 pt-6">
       <div className="flex items-center justify-center">
         <Image
-          src="/Logotipos.svg"
           alt="Logotipo da Ecto"
-          width={96}
           height={28}
+          src="/Logotipos.svg"
+          width={96}
         />
       </div>
-      <span className="text-sm font-semibold leading-tight">
+      <span className="font-semibold text-sm leading-tight">
         Falar com um especialista
       </span>
     </header>

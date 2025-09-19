@@ -5,5 +5,12 @@ interface RootProps extends ComponentProps<"form"> {
 }
 
 export const Root = ({ children, ...props }: RootProps) => {
-  return <form {...props}>{children}</form>;
+  return (
+    <form
+      className="flex flex-col items-center justify-center"
+      {...props}
+    >
+      {children}
+    </form>
+  );
 };

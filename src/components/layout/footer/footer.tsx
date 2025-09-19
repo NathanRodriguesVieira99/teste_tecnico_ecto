@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="pt-10 gap-6 flex flex-col justify-start items-center">
-      <div className=" inline-flex items-center justify-start gap-6">
+    <footer className="pt-10 w-96 gap-6 min-h-full  max-h-screen flex flex-col justify-start items-center ">
+      <div className="  inline-flex items-center justify-start gap-6">
         {" "}
         <Link
           href="#"

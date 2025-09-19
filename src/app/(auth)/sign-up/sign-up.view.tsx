@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { ShowPasswordButton } from "@/components/ui/show-password-button";
 import { UserIcon } from "@/components/ui/user-icon";
+import { usePasswordVisibility } from "@/hooks/usePasswordVisibility";
 import { TitleTextSpan } from "./_components/title-span-text";
 import { TitleText } from "./_components/title-text";
 import type { useSignUpPageModel } from "./sign-up.model";
@@ -14,6 +15,10 @@ export type SignUpPageViewProps = ReturnType<typeof useSignUpPageModel>;
 
 export const SignUpPageView = (props: SignUpPageViewProps) => {
   const { methods, onSubmit } = props;
+
+  // o mesmo hook, mas declara duas vezes para usar nos dois inputs de senha
+  const passwordVisibility = usePasswordVisibility();
+  const confirmPasswordVisibility = usePasswordVisibility();
   return (
     <section className="flex min-h-screen w-96 flex-col items-center justify-center overflow-auto pb-6">
       <UserIcon />
@@ -38,6 +43,25 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
                 <ErrorMessage
                   errors={methods.formState.errors}
                   name="name"
+                  render={({ message }) => (
+                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                      {message}
+                    </p>
+                  )}
+                />
+              </Form.Field>
+
+              <Form.Field>
+                <Form.Label htmlFor="last_name">Sobrenome</Form.Label>
+                <Form.Input
+                  id="last_name"
+                  name="last_name"
+                  placeholder="Escreva seu sobrenome"
+                  type="text"
+                />
+                <ErrorMessage
+                  errors={methods.formState.errors}
+                  name="last_name"
                   render={({ message }) => (
                     <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
                       {message}
@@ -92,9 +116,14 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
                     id="password"
                     name="password"
                     placeholder="•••••••••"
-                    type="password"
+                    type={
+                      passwordVisibility.isPasswordVisible ? "text" : "password"
+                    }
                   />
-                  <ShowPasswordButton />
+                  <ShowPasswordButton
+                    isVisible={passwordVisibility.isPasswordVisible}
+                    onClick={passwordVisibility.toggleShowPassword}
+                  />
                 </div>
                 <ErrorMessage
                   errors={methods.formState.errors}
@@ -108,22 +137,29 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
               </Form.Field>
 
               <Form.Field className="max-w-[327px]">
-                <Form.Label htmlFor="confirmPassword">
+                <Form.Label htmlFor="confirm_password">
                   Confirme sua senha
                 </Form.Label>
                 <div className="flex">
                   <Form.Input
                     className="rounded-tl-md rounded-tr-none rounded-br-none rounded-bl-md"
-                    id="confirmPassword"
-                    name="confirmPassword"
+                    id="confirm_password"
+                    name="confirm_password"
                     placeholder="•••••••••"
-                    type="password"
+                    type={
+                      confirmPasswordVisibility.isPasswordVisible
+                        ? "text"
+                        : "password"
+                    }
                   />
-                  <ShowPasswordButton />
+                  <ShowPasswordButton
+                    isVisible={confirmPasswordVisibility.isPasswordVisible}
+                    onClick={confirmPasswordVisibility.toggleShowPassword}
+                  />
                 </div>
                 <ErrorMessage
                   errors={methods.formState.errors}
-                  name="confirmPassword"
+                  name="confirm_password"
                   render={({ message }) => (
                     <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
                       {message}

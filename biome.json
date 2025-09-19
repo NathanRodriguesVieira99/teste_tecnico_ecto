@@ -18,6 +18,9 @@
     "enabled": true,
     "rules": {
       "performance": { "noBarrelFile": "off" },
+      "style": {
+        "useFilenamingConvention": "off"
+      },
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off"

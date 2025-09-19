@@ -19,7 +19,8 @@
     "rules": {
       "performance": { "noBarrelFile": "off" },
       "style": {
-        "useFilenamingConvention": "off"
+        "useFilenamingConvention": "off",
+        "noParameterProperties": "off"
       },
       "recommended": true,
       "suspicious": {

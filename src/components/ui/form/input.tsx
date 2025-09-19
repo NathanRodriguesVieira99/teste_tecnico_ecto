@@ -18,12 +18,12 @@ export const Input = ({
 
   return (
     <input
-      id={name}
-      placeholder={placeholder}
       className={twMerge(
-        'w-[327px] h-10 px-4 py-2 bg-white rounded-md  placeholder:text-sub placeholder:text-base placeholder:font-normal placeholder:leading-normal outline-soft outline-1 outline-offset-[-1px] items-center gap-2 justify-start focus:outline-primary hover:outline-sub"',
+        'h-10 w-[327px] items-center justify-start gap-2 rounded-md bg-white px-4 py-2 outline-1 outline-soft outline-offset-[-1px] placeholder:font-normal placeholder:text-base placeholder:text-sub placeholder:leading-normal hover:outline-sub" focus:outline-primary',
         className
       )}
+      id={name}
+      placeholder={placeholder}
       {...props}
       {...register(name)}
     />

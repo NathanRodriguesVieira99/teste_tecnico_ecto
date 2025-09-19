@@ -1,6 +1,17 @@
 import type { ComponentProps } from "react";
 
-export const Label = (props: ComponentProps<"label">) => {
-  // biome-ignore lint/a11y/noLabelWithoutControl: ignorei essa regra do lint pois essa label será associada a um input no componente que for usada
-  return <label {...props} className="" />;
+interface LabelProps extends ComponentProps<"label"> {
+  children: React.ReactNode;
+}
+
+export const Label = ({ children, htmlFor, ...props }: LabelProps) => {
+  return (
+    <label
+      htmlFor={htmlFor}
+      {...props}
+      className="text-main text-base pb-2 pt-4 font-semibold leading-normal"
+    >
+      {children}
+    </label>
+  );
 };

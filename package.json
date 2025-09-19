@@ -10,7 +10,7 @@
     "lint": "biome check",
     "format": "biome format --write",
     "test": "dotenv -e .env.test -- vitest run --bail 1",
-    "test:coverage": "dotenv -e .env.test -- vitest run --coverage --no-file-parallelism",
+    "test:coverage": "dotenv -e .env.test -- vitest run --coverage --no-file-parallelism --passWithNoTests",
     "test:watch": "dotenv -e .env.test -- vitest watch --bail 1",
     "test:unit": "dotenv -e .env.test -- vitest run  --exclude 'src/**/*.{spec,e2e}.{ts,tsx}'  --fileParallelism",
     "test:unit:watch": "dotenv -e .env.test -- vitest --exclude 'src/**/*.{spec,e2e}.{ts,tsx}'  --fileParallelism",

@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "javascript": { "globals": ["describe", "it", "expect", "vi"] },
   "vcs": {
     "enabled": true,
     "clientKind": "git",

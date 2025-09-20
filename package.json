@@ -14,7 +14,7 @@
     "test:watch": "dotenv -e .env.test -- vitest watch --bail 1",
     "test:unit": "dotenv -e .env.test -- vitest run  --exclude 'src/**/*.{spec,e2e}.{ts,tsx}'  --fileParallelism",
     "test:unit:watch": "dotenv -e .env.test -- vitest --exclude 'src/**/*.{spec,e2e}.{ts,tsx}'  --fileParallelism",
-    "test:int": "dotenv -e .env.test -- vitest run --exclude 'src/**/*.{test,e2e}.{ts,tsx}' --no-file-parallelism",
+    "test:int": "dotenv -e .env.test -- vitest run --exclude 'src/**/*.{test,e2e}.{ts,tsx}' --no-file-parallelism --passWithNoTests",
     "test:int:watch": "dotenv -e .env.test -- vitest --exclude 'src/**/*.{test,e2e}.{ts,tsx}' --no-file-parallelism",
     "test:e2e": "dotenv -e .env.test -- playwright test --reporter null",
     "test:e2e:headed": "dotenv -e .env.test -- playwright test --headed  --reporter null",

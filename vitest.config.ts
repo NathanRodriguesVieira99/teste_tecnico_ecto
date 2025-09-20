@@ -10,7 +10,6 @@ export default defineConfig({
     globals: true,
     fileParallelism: false,
     setupFiles: ["vitest.setup.ts"],
-    globalSetup: ["vitest.global.setup.ts"],
     /*
     Para criar testes unitários usar *.test.{ts,tsx}.
     Para criar testes de integração usar *.spec.{ts,tsx}.

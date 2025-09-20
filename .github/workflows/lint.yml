@@ -1,0 +1,27 @@
+name: 💅 Lint
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  Lint:
+    name: Run biomeJs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: install pnpm
+        run: npm i -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run biomeJS lint
+        run: pnpm lint
+
+      - name: Run biomeJS format
+        run: pnpm format

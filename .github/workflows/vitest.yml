@@ -1,4 +1,4 @@
-name: Run Vitest
+name: ⚡Vitest
 
 on:
   push:

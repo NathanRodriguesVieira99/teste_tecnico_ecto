@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Header = () => {
   return (
-    <header className="relative flex h-5 w-96 items-center justify-between p-6 pt-6">
+    <header className="relative flex h-5 w-96 items-center justify-between px-6 py-6 pt-6">
       <div className="flex items-center justify-center">
         <Image
           alt="Logotipo da Ecto"
@@ -11,7 +11,7 @@ export const Header = () => {
           width={96}
         />
       </div>
-      <span className="font-semibold text-sm leading-tight">
+      <span className="cursor-pointer font-semibold text-sm leading-tight">
         Falar com um especialista
       </span>
     </header>

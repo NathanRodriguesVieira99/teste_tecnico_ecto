@@ -34,8 +34,7 @@ export const useSignUpPageModel = ({ SignUpService }: SignUpServiceProps) => {
       // biome-ignore lint/suspicious/noConsole: apenas para exibir o retorno.
       console.log("Dados enviados: ", data);
     } catch {
-      // biome-ignore lint/suspicious/noConsole: apenas para ter algo no catch.
-      console.error("Erro ao se cadastrar!");
+      throw new Error("Erro ao se cadastrar!");
     }
 
     // limpa o input após o cadastro
@@ -44,5 +43,5 @@ export const useSignUpPageModel = ({ SignUpService }: SignUpServiceProps) => {
 
   const onSubmit = handleSubmit(handleSignUp);
 
-  return { methods, onSubmit, isSubmitting, errors };
+  return { methods, onSubmit, isSubmitting, errors, handleSignUp };
 };

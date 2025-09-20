@@ -17,7 +17,7 @@ if (_env.success === false) {
     // biome-ignore lint/suspicious/noConsole: log apenas no ambiente de dev
     console.error(_env.error);
   }
-  throw new Error("❌ Invalid environment variables ", _env.error);
+  throw new Error(`❌ Invalid environment variables: ${_env.error}`);
 }
 
 export const env = _env.data;

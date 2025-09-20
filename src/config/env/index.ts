@@ -3,7 +3,9 @@ import z from "zod";
 export const envSchema = z.object({
   NEXT_PUBLIC_API_URL: z.url().startsWith("https://flow.ecto.tools"),
   NEXT_PUBLIC_API_TOKEN: z.string(),
-  NODE_ENV: z.enum(["development", "test"]).default("development"),
+  NODE_ENV: z
+    .enum(["development", "test", "production"])
+    .default("development"),
 });
 
 const _env = envSchema.safeParse({

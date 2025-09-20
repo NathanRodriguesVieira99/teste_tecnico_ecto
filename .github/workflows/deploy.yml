@@ -14,11 +14,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: install pnpm
-        run: npm i -g pnpm
-
       - name: Install Vercel CLI
-        run: pnpm install -g vercel
+        run: npm i install -g vercel
 
       - name: Deploy to Vercel
         run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}

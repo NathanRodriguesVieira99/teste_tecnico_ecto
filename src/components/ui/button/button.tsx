@@ -11,11 +11,11 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <div className="w-full z-20  pt-6 flex items-center justify-center">
+    <div className="z-20 flex w-full items-center justify-center pt-6">
       <button
         type={type}
         {...props}
-        className="cursor-pointer h-12 w-full  px-6 bg-primary rounded-md justify-center items-center gap- hover:bg-secondary disabled:cursor-not-allowed text-white disabled:bg-primary disabled:opacity-40"
+        className="gap- h-12 w-full cursor-pointer items-center justify-center rounded-md bg-primary px-6 text-white hover:bg-secondary disabled:cursor-not-allowed disabled:bg-primary disabled:opacity-40"
       >
         {children}
       </button>

@@ -9,19 +9,16 @@ jobs:
   Lint:
     name: Run biomeJs
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: install pnpm
-        run: npm i -g pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run biomeJS format
-        run: pnpm biome format --write .
-
-      - name: Run biomeJS lint
-        run: pnpm biome check .
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+      - name: Run Biome
+        run: biome ci .

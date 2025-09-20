@@ -20,15 +20,15 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
   const passwordVisibility = usePasswordVisibility();
   const confirmPasswordVisibility = usePasswordVisibility();
   return (
-    <section className="flex min-h-screen w-96 flex-col items-center justify-center overflow-auto pb-6">
+    <section className="flex min-h-screen min-w-[327px] flex-col items-center justify-center overflow-auto px-6 pb-6">
       <UserIcon />
 
-      <div className="flex flex-col items-center justify-center pt-6">
+      <div className="flex w-full flex-col items-center justify-center pt-6">
         <TitleText />
         <TitleTextSpan />
       </div>
 
-      <div className="">
+      <div className="flex max-w-[327px] items-center justify-center">
         <FormProvider {...methods}>
           <Form.Container>
             <Form.Root onSubmit={onSubmit}>

@@ -1,4 +1,5 @@
 {
-  "src/**/*.{test,spec}.{ts,tsx}": ["pnpm test:unit", "pnpm test:int"],
+  "src/**/*.test.{ts,tsx}": ["pnpm test:unit"],
+  "src/**/*.spec.{ts,tsx}": ["pnpm test:int"],
   "src/**/*.{ts,tsx,css}": ["pnpm format", "pnpm lint"]
 }

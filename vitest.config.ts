@@ -23,6 +23,7 @@ export default defineConfig({
       exclude: [
         "**/*.test.{ts,tsx}",
         "**/*.spec.{ts,tsx}",
+        "**/*.e2e-spec.ts",
         "**/types/**",
         "**/*.d.ts",
         "**/mocks/**",

@@ -21,7 +21,7 @@ jobs:
         run: pnpm install
 
       - name: Run biomeJS format
-        run: biome format --write .
+        run: pnpm biome format --write .
 
       - name: Run biomeJS lint
-        run: biome check .
+        run: pnpm biome check .

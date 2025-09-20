@@ -9,11 +9,11 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   // reporter: "html",
   use: {
-    baseURL: "http://localhost:5173",
+    baseURL: "http://localhost:3000",
   },
   webServer: {
     command: "pnpm dev:test",
-    url: "http://localhost:5173",
+    url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },
   projects: [
@@ -34,8 +34,8 @@ export default defineConfig({
 
     /* Test against mobile viewports. */
     {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
+      name: "Mobile Chrome",
+      use: { ...devices["Pixel 5"] },
     },
     // {
     //   name: 'Mobile Safari',

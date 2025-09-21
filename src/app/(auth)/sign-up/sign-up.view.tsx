@@ -20,163 +20,169 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
   const passwordVisibility = usePasswordVisibility();
   const confirmPasswordVisibility = usePasswordVisibility();
   return (
-    <section className="flex min-h-screen min-w-[327px] flex-col items-center justify-center overflow-auto px-6 pb-6">
-      <UserIcon />
+    <div className="lg:mt-12">
+      <section className="flex min-h-screen min-w-[327px] flex-col items-center justify-center overflow-auto px-6 pt-auto pb-6 lg:w-[600px] lg:gap-6">
+        <UserIcon />
 
-      <div className="flex w-full flex-col items-center justify-center pt-6">
-        <TitleText />
-        <TitleTextSpan />
-      </div>
+        <div className="flex w-full flex-col items-center justify-center pt-6 lg:items-start lg:justify-start lg:pt-6 lg:pb-6">
+          <TitleText />
+          <TitleTextSpan />
+        </div>
 
-      <div className="flex max-w-[327px] items-center justify-center">
-        <FormProvider {...methods}>
-          <Form.Container>
-            <Form.Root onSubmit={onSubmit}>
-              <Form.Field>
-                <Form.Label htmlFor="name">Nome</Form.Label>
-                <Form.Input
-                  id="name"
-                  name="name"
-                  placeholder="Escreva seu nome"
-                  type="text"
-                />
-                <ErrorMessage
-                  errors={methods.formState.errors}
-                  name="name"
-                  render={({ message }) => (
-                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
-                      {message}
-                    </p>
-                  )}
-                />
-              </Form.Field>
-
-              <Form.Field>
-                <Form.Label htmlFor="last_name">Sobrenome</Form.Label>
-                <Form.Input
-                  id="last_name"
-                  name="last_name"
-                  placeholder="Escreva seu sobrenome"
-                  type="text"
-                />
-                <ErrorMessage
-                  errors={methods.formState.errors}
-                  name="last_name"
-                  render={({ message }) => (
-                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
-                      {message}
-                    </p>
-                  )}
-                />
-              </Form.Field>
-
-              <Form.Field>
-                <Form.Label htmlFor="email">E-mail</Form.Label>
-                <Form.Input
-                  id="email"
-                  name="email"
-                  placeholder="exemplo@email.com"
-                  type="email"
-                />
-                <ErrorMessage
-                  errors={methods.formState.errors}
-                  name="email"
-                  render={({ message }) => (
-                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
-                      {message}
-                    </p>
-                  )}
-                />
-              </Form.Field>
-
-              <Form.Field>
-                <Form.Label htmlFor="phone">Telefone</Form.Label>
-                <Form.Input
-                  id="phone"
-                  name="phone"
-                  placeholder="+55 (00) 00000-0000"
-                  type="phone"
-                />
-                <ErrorMessage
-                  errors={methods.formState.errors}
-                  name="phone"
-                  render={({ message }) => (
-                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
-                      {message}
-                    </p>
-                  )}
-                />
-              </Form.Field>
-
-              <Form.Field className="max-w-[327px]">
-                <Form.Label htmlFor="password">Senha</Form.Label>
-                <div className="flex">
+        <div className="flex max-w-[327px] items-center justify-center lg:max-w-[540px] lg:pb-12">
+          <FormProvider {...methods}>
+            <Form.Container>
+              <Form.Root onSubmit={onSubmit}>
+                <Form.Field>
+                  <Form.Label htmlFor="name">Nome</Form.Label>
                   <Form.Input
-                    className="rounded-tl-md rounded-tr-none rounded-br-none rounded-bl-md"
-                    id="password"
-                    name="password"
-                    placeholder="•••••••••"
-                    type={
-                      passwordVisibility.isPasswordVisible ? "text" : "password"
-                    }
+                    id="name"
+                    name="name"
+                    placeholder="Escreva seu nome"
+                    type="text"
                   />
-                  <ShowPasswordButton
-                    isVisible={passwordVisibility.isPasswordVisible}
-                    onClick={passwordVisibility.toggleShowPassword}
+                  <ErrorMessage
+                    errors={methods.formState.errors}
+                    name="name"
+                    render={({ message }) => (
+                      <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                        {message}
+                      </p>
+                    )}
                   />
-                </div>
-                <ErrorMessage
-                  errors={methods.formState.errors}
-                  name="password"
-                  render={({ message }) => (
-                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
-                      {message}
-                    </p>
-                  )}
-                />
-              </Form.Field>
+                </Form.Field>
 
-              <Form.Field className="max-w-[327px]">
-                <Form.Label htmlFor="confirm_password">
-                  Confirme sua senha
-                </Form.Label>
-                <div className="flex">
+                <Form.Field>
+                  <Form.Label htmlFor="last_name">Sobrenome</Form.Label>
                   <Form.Input
-                    className="rounded-tl-md rounded-tr-none rounded-br-none rounded-bl-md"
-                    id="confirm_password"
-                    name="confirm_password"
-                    placeholder="•••••••••"
-                    type={
-                      confirmPasswordVisibility.isPasswordVisible
-                        ? "text"
-                        : "password"
-                    }
+                    id="last_name"
+                    name="last_name"
+                    placeholder="Escreva seu sobrenome"
+                    type="text"
                   />
-                  <ShowPasswordButton
-                    isVisible={confirmPasswordVisibility.isPasswordVisible}
-                    onClick={confirmPasswordVisibility.toggleShowPassword}
+                  <ErrorMessage
+                    errors={methods.formState.errors}
+                    name="last_name"
+                    render={({ message }) => (
+                      <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                        {message}
+                      </p>
+                    )}
                   />
-                </div>
-                <ErrorMessage
-                  errors={methods.formState.errors}
-                  name="confirm_password"
-                  render={({ message }) => (
-                    <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
-                      {message}
-                    </p>
-                  )}
-                />
-              </Form.Field>
+                </Form.Field>
 
-              <Button disabled={methods.formState.isSubmitting} type="submit">
-                {methods.formState.isSubmitting
-                  ? "Cadastrando..."
-                  : "Cadastrar conta"}
-              </Button>
-            </Form.Root>
-          </Form.Container>
-        </FormProvider>
-      </div>
-    </section>
+                <Form.Field>
+                  <Form.Label htmlFor="email">E-mail</Form.Label>
+                  <Form.Input
+                    id="email"
+                    name="email"
+                    placeholder="exemplo@email.com"
+                    type="email"
+                  />
+                  <ErrorMessage
+                    errors={methods.formState.errors}
+                    name="email"
+                    render={({ message }) => (
+                      <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                        {message}
+                      </p>
+                    )}
+                  />
+                </Form.Field>
+
+                <Form.Field>
+                  <Form.Label htmlFor="phone">Telefone</Form.Label>
+                  <Form.Input
+                    id="phone"
+                    name="phone"
+                    placeholder="+55 (00) 00000-0000"
+                    type="phone"
+                  />
+                  <ErrorMessage
+                    errors={methods.formState.errors}
+                    name="phone"
+                    render={({ message }) => (
+                      <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                        {message}
+                      </p>
+                    )}
+                  />
+                </Form.Field>
+
+                <div className="items-end justify-end lg:flex lg:max-w-screen lg:flex-row lg:items-start lg:justify-start lg:gap-4">
+                  <Form.Field className="max-w-[327px] lg:max-w-[288px]">
+                    <Form.Label htmlFor="password">Senha</Form.Label>
+                    <div className="flex">
+                      <Form.Input
+                        className="rounded-tl-md rounded-tr-none rounded-br-none rounded-bl-md lg:max-w-[212px]"
+                        id="password"
+                        name="password"
+                        placeholder="•••••••••"
+                        type={
+                          passwordVisibility.isPasswordVisible
+                            ? "text"
+                            : "password"
+                        }
+                      />
+                      <ShowPasswordButton
+                        isVisible={passwordVisibility.isPasswordVisible}
+                        onClick={passwordVisibility.toggleShowPassword}
+                      />
+                    </div>
+                    <ErrorMessage
+                      errors={methods.formState.errors}
+                      name="password"
+                      render={({ message }) => (
+                        <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                          {message}
+                        </p>
+                      )}
+                    />
+                  </Form.Field>
+
+                  <Form.Field className="max-w-[327px] lg:max-w-[288px]">
+                    <Form.Label htmlFor="confirm_password">
+                      Confirme sua senha
+                    </Form.Label>
+                    <div className="flex">
+                      <Form.Input
+                        className="rounded-tl-md rounded-tr-none rounded-br-none rounded-bl-md lg:max-w-[212px]"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="•••••••••"
+                        type={
+                          confirmPasswordVisibility.isPasswordVisible
+                            ? "text"
+                            : "password"
+                        }
+                      />
+                      <ShowPasswordButton
+                        isVisible={confirmPasswordVisibility.isPasswordVisible}
+                        onClick={confirmPasswordVisibility.toggleShowPassword}
+                      />
+                    </div>
+                    <ErrorMessage
+                      errors={methods.formState.errors}
+                      name="confirm_password"
+                      render={({ message }) => (
+                        <p className="pt-2 pb-2 font-semibold text-error text-sm leading-tight">
+                          {message}
+                        </p>
+                      )}
+                    />
+                  </Form.Field>
+                </div>
+
+                <Button disabled={methods.formState.isSubmitting} type="submit">
+                  {methods.formState.isSubmitting
+                    ? "Cadastrando..."
+                    : "Cadastrar conta"}
+                </Button>
+              </Form.Root>
+            </Form.Container>
+          </FormProvider>
+        </div>
+      </section>
+    </div>
   );
 };

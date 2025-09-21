@@ -1,3 +1,3 @@
 export const TitleText = () => {
-  return <h1 className="text-main font-bold text-3xl ">Criar nova conta</h1>;
+  return <h1 className="font-bold text-3xl text-main">Criar nova conta</h1>;
 };

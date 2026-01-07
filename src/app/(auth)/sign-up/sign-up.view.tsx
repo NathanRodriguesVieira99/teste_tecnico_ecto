@@ -17,8 +17,16 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
   const { methods, onSubmit } = props;
 
   // o mesmo hook, mas declara duas vezes para usar nos dois inputs de senha
-  const passwordVisibility = usePasswordVisibility();
-  const confirmPasswordVisibility = usePasswordVisibility();
+  const {
+    isPasswordVisible: isPasswordFieldVisible,
+    toggleShowPassword: toggleShowPasswordField,
+  } = usePasswordVisibility();
+
+  const {
+    isPasswordVisible: isConfirmPasswordFieldVisible,
+    toggleShowPassword: toggleShowConfirmPasswordField,
+  } = usePasswordVisibility();
+
   return (
     <div className="lg:mt-12">
       <section className="flex min-h-screen min-w-[327px] flex-col items-center justify-center overflow-auto px-6 pt-auto pb-6 lg:w-[600px] lg:gap-6">
@@ -118,15 +126,11 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
                         id="password"
                         name="password"
                         placeholder="•••••••••"
-                        type={
-                          passwordVisibility.isPasswordVisible
-                            ? "text"
-                            : "password"
-                        }
+                        type={isPasswordFieldVisible ? "text" : "password"}
                       />
                       <ShowPasswordButton
-                        isVisible={passwordVisibility.isPasswordVisible}
-                        onClick={passwordVisibility.toggleShowPassword}
+                        isVisible={isPasswordFieldVisible}
+                        onClick={toggleShowPasswordField}
                       />
                     </div>
                     <ErrorMessage
@@ -151,14 +155,12 @@ export const SignUpPageView = (props: SignUpPageViewProps) => {
                         name="confirm_password"
                         placeholder="•••••••••"
                         type={
-                          confirmPasswordVisibility.isPasswordVisible
-                            ? "text"
-                            : "password"
+                          isConfirmPasswordFieldVisible ? "text" : "password"
                         }
                       />
                       <ShowPasswordButton
-                        isVisible={confirmPasswordVisibility.isPasswordVisible}
-                        onClick={confirmPasswordVisibility.toggleShowPassword}
+                        isVisible={isConfirmPasswordFieldVisible}
+                        onClick={toggleShowConfirmPasswordField}
                       />
                     </div>
                     <ErrorMessage

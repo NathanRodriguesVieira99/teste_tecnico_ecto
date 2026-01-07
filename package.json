@@ -7,8 +7,6 @@
     "dev:test": "dotenv -e .env.test next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "biome check",
-    "format": "biome format --write",
     "test": "dotenv -e .env.test -- vitest run --bail 1",
     "test:coverage": "dotenv -e .env.test -- vitest run --coverage --no-file-parallelism --passWithNoTests",
     "test:watch": "dotenv -e .env.test -- vitest watch --bail 1",
@@ -35,7 +33,6 @@
     "zod": "^4.1.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.2",
     "@faker-js/faker": "^10.0.0",
     "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
@@ -55,7 +52,6 @@
     "lint-staged": "^16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "ultracite": "5.3.8",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },

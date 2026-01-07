@@ -1,59 +1,44 @@
-import { renderHook } from "@testing-library/react";
+import { waitFor } from "@testing-library/react";
 import {
   MakeCreateFakeUser,
   MakeCreateWrongFakeUser,
 } from "@/tests/factories/make-create-fake-user";
-import { SignUpServiceMock } from "@/tests/mocks/sign-up.mock";
-import { customQueryClientProviderWrapper } from "@/tests/utils/QueryClient-custom-render";
-import { useSignUpPageModel } from "./sign-up.model";
+import { setupHook } from "@/tests/utils/setup-hook";
 
 describe("useSignUpModel", () => {
   it("should create account", async () => {
-    // instancia o mock do serviço de cadastro
-    const signUpServiceMock = new SignUpServiceMock();
-
-    /*
-      renderHook para renderizar os hooks usados em useSignUpModel (useForm) e o customQueryClientProviderWrapper (para ter acesso ao useMutation)
-      */
-    const { result } = renderHook(
-      () =>
-        useSignUpPageModel({
-          SignUpService: signUpServiceMock,
-        }),
-      { wrapper: customQueryClientProviderWrapper }
-    );
+    const { result, signUpServiceMock } = setupHook(); // renderiza o hook para ter acesso aos métodos de useSignUpModel()
 
     // cria um usuário fake
     const fakeUser = MakeCreateFakeUser();
 
-    // passa os dados do usuário pra função handleSignUp
-    await result.current.handleSignUp(fakeUser);
+    // executa a função handleSignUp e atualiza o estado
+    await waitFor(async () => {
+      await result.current.handleSignUp(fakeUser);
+    });
 
-    // espera que o body da requisição (POST) seja igual ao do mock
-    expect(signUpServiceMock.body).toEqual(fakeUser);
+    await waitFor(() => {
+      // espera que o body da requisição (POST) seja igual ao do mock
+      expect(signUpServiceMock.body).toEqual(fakeUser);
+      // espera que retorne sucesso do React Query
+      expect(result.current.isSuccess).toBe(true);
+    });
   });
 
   it("should throw erro on create account with wrong credentials", async () => {
-    // instancia o mock do serviço de cadastro
-    const signUpServiceMock = new SignUpServiceMock();
-
-    /*
-      renderHook para renderizar os hooks usados em useSignUpModel (useForm) e o customQueryClientProviderWrapper (para ter acesso ao useMutation)
-      */
-    const { result } = renderHook(
-      () =>
-        useSignUpPageModel({
-          SignUpService: signUpServiceMock,
-        }),
-      { wrapper: customQueryClientProviderWrapper }
-    );
+    const { result } = setupHook(); // renderiza o hook para ter acesso aos métodos de useSignUpModel()
 
     // cria um usuário fake
     const fakeUser = MakeCreateWrongFakeUser();
 
-    // espera que de erro na requisição (POST)
+    // espera que de erro ao tentar cadastrar um usuário (método POST)
     await expect(result.current.handleSignUp(fakeUser)).rejects.toThrow(
       "Erro ao se cadastrar!"
     );
+
+    // espera que retorne erro do React Query
+    await waitFor(() => {
+      expect(result.current.isError).toBe(true);
+    });
   });
 });

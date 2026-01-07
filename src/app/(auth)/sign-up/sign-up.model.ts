@@ -16,32 +16,33 @@ export const useSignUpPageModel = ({ SignUpService }: SignUpServiceProps) => {
     formState: { isSubmitting, errors },
   } = methods;
 
-  const { mutateAsync: signUpServiceFn } = useMutation({
+  const {
+    mutateAsync: signUpServiceFn,
+    isError,
+    isSuccess,
+  } = useMutation({
     mutationFn: (data: SignUpServiceBody) => SignUpService.exec(data),
+    onSuccess: () => {
+      methods.reset();
+    },
+    onError: (err) => {
+      err.message;
+    },
   });
 
   const handleSignUp = async (data: SignUpSchema) => {
-    try {
-      await signUpServiceFn({
-        name: data.name,
-        last_name: data.last_name,
-        email: data.email,
-        phone: data.phone,
-        password: data.password,
-        confirm_password: data.confirm_password,
-      });
-
-      // biome-ignore lint/suspicious/noConsole: apenas para exibir o retorno.
-      console.log("Dados enviados: ", data);
-    } catch {
-      throw new Error("Erro ao se cadastrar!");
-    }
-
-    // limpa o input após o cadastro
-    methods.reset();
+    await signUpServiceFn(data);
   };
 
   const onSubmit = handleSubmit(handleSignUp);
 
-  return { methods, onSubmit, isSubmitting, errors, handleSignUp };
+  return {
+    methods,
+    onSubmit,
+    isSubmitting,
+    errors,
+    handleSignUp,
+    isError,
+    isSuccess,
+  };
 };
